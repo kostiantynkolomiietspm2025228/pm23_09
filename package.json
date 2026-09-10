@@ -18,7 +18,8 @@
   "homepage": "https://github.com/kostiantynkolomiietspm2025228/pm23_09#readme",
   "description": "",
   "devDependencies": {
-    "gulp": "^5.0.1"
+    "gulp": "^5.0.1",
+    "sass": "^1.104.0"
   },
   "dependencies": {
     "browser-sync": "^3.0.4",
