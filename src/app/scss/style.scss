@@ -1,0 +1,15 @@
+/* Example of SMACSS Base Rules */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: blue;
+    color: #333;
+}
+
+h1 {
+    color: #0076ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
