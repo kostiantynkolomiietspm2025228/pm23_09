@@ -17,12 +17,13 @@ function html() {
             prefix: '@@',
             basepath: 'src/app'
         }))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('dist'))
+        .pipe(browserSync.stream());
 }
 
 // SCSS
 function scss() {
-    return gulp.src('src/app/scss/**/*.scss')
+    return gulp.src('src/app/scss/*.scss')
         .pipe(scssCompiler().on('error', scssCompiler.logError))
         .pipe(cssnano())
         .pipe(gulp.dest('dist/css'))
@@ -31,16 +32,22 @@ function scss() {
 
 // JS
 function js() {
-    return gulp.src('src/app/js/**/*.js')
+    return gulp.src('src/app/js/*.js')
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'))
         .pipe(browserSync.stream());
 }
 
-// Images
+//gulp Images
+//  function images() {
+//      return gulp.src('src/app/images/*.{jpg,jpeg,png,gif,svg}')
+//         // .pipe(imagemin())
+//      .pipe(gulp.dest('dist/images'));
+// }
 function images() {
-    return gulp.src('src/app/images/**/*')
-        .pipe(imagemin())
+    return gulp.src('src/app/images/*.{jpg,jpeg,png,gif,svg}', {
+        encoding: false
+    })
         .pipe(gulp.dest('dist/images'));
 }
 
@@ -58,14 +65,25 @@ function watchFiles() {
     gulp.watch('src/app/*.html', html);
     gulp.watch('src/app/scss/**/*.scss', scss);
     gulp.watch('src/app/js/**/*.js', js);
-    gulp.watch('src/app/imges/**/*', images);
+    gulp.watch('src/app/images/**/*', images);
+}
+export function bootstrapCss() {
+    return gulp.src('node_modules/bootstrap/dist/css/bootstrap.min.css')
+        .pipe(gulp.dest('dist/css'));
 }
 
+export function bootstrapJs() {
+    return gulp.src('node_modules/bootstrap/dist/js/bootstrap.bundle.min.js')
+        .pipe(gulp.dest('dist/js'));
+}
 export { html, scss, js, images, watchFiles, serve };
 
 export default gulp.series(
     html,
     scss,
     js,
-    images
+    images,
+    bootstrapCss,
+    bootstrapJs,
+    gulp.parallel(watchFiles, serve) // Тепер сервер і стеження працюватимуть разом
 );
