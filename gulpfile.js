@@ -48,6 +48,7 @@ function images() {
     return gulp.src('src/app/images/*.{jpg,jpeg,png,gif,svg}', {
         encoding: false
     })
+        .pipe(imagemin())
         .pipe(gulp.dest('dist/images'));
 }
 

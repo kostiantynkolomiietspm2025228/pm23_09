@@ -22,6 +22,7 @@
     "sass": "^1.104.0"
   },
   "dependencies": {
+    "bootstrap": "^5.3.8",
     "browser-sync": "^3.0.4",
     "gulp-cssnano": "^2.1.3",
     "gulp-file-include": "^2.3.0",
