@@ -1,0 +1,23 @@
+@use 'variables' as *;
+
+.education-section {
+  margin-top: 50px;
+
+  h2 {
+    margin-bottom: 17px;
+  }
+}
+
+.education-list {
+  h3 {
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 11px;
+    line-height: 1.65;
+    color: #555;
+  }
+}

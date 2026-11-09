@@ -1,0 +1,43 @@
+@use 'variables' as *;
+
+.right-column {
+  padding: 0 40px;
+  background-color: $white;
+  flex: 0 0 56.3%;
+  max-width: 56.3%;
+
+  section {
+    width: 100%;
+  }
+}
+
+.profile-header {
+  padding-top: 68px;
+
+  h1 {
+    font-family: $heading-font;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 2px;
+    margin: 0;
+
+    strong {
+      font-weight: 700;
+    }
+  }
+
+  .small-yellow-line {
+    width: 33px;
+    height: 2px;
+    background-color: $yellow;
+    margin-top: 7px;
+  }
+
+  p {
+    font-family: $heading-font;
+    font-size: 14px;
+    letter-spacing: 4px;
+    margin-top: 10px;
+  }
+}

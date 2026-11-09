@@ -1,0 +1,76 @@
+@use 'variables' as *;
+
+.expertise-section {
+  margin-top: 43px;
+
+  h2 {
+    margin-bottom: 23px;
+  }
+}
+
+.skills-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2px;
+}
+
+.skill-circle {
+  width: $circle-size;
+  height: $circle-size;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: $circle-size - 13px;
+    height: $circle-size - 13px;
+    background-color: $white;
+    border-radius: 50%;
+  }
+
+  span {
+    position: relative;
+    z-index: 1;
+    font-size: 7px;
+    line-height: 1.2;
+    text-align: center;
+    color: #444;
+  }
+}
+
+.photoshop {
+  background: conic-gradient(
+                  from 180deg,
+                  $yellow 0deg 280deg,
+                  #e4e4e4 280deg 360deg
+  );
+}
+
+.illustrator {
+  background: conic-gradient(
+                  from 180deg,
+                  $yellow 0deg 260deg,
+                  #e4e4e4 260deg 360deg
+  );
+}
+
+.indesign {
+  background: conic-gradient(
+                  from 180deg,
+                  $yellow 0deg 245deg,
+                  #e4e4e4 245deg 360deg
+  );
+}
+
+.powerpoint {
+  background: conic-gradient(
+                  from 180deg,
+                  $yellow 0deg 300deg,
+                  #e4e4e4 300deg 360deg
+  );
+}

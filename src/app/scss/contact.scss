@@ -1,0 +1,23 @@
+@use 'variables' as *;
+
+.contact-section {
+  margin-top: 66px;
+
+  h2 {
+    margin-bottom: 17px;
+  }
+}
+
+.contact-list {
+  h3 {
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  p {
+    font-size: 8px;
+    white-space: nowrap;
+    margin: 0;
+  }
+}

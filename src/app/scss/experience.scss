@@ -1,0 +1,46 @@
+@use 'variables' as *;
+
+.experience-section {
+  margin-top: $section-spacing;
+
+  h2 {
+    margin-bottom: 18px;
+  }
+}
+
+.experience-item {
+  margin-bottom: 28px;
+
+  h3 {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 7px;
+  }
+
+  p {
+    font-size: 10px;
+    line-height: 1.65;
+    color: #555;
+    margin-top: 7px;
+  }
+}
+
+.experience-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  span:last-child {
+    font-size: 10px;
+    color: #555;
+  }
+}
+
+.year-badge {
+  background-color: $yellow;
+  padding: 3px 13px;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 500;
+  color: $dark;
+}

@@ -19,6 +19,7 @@
   "description": "",
   "devDependencies": {
     "gulp": "^5.0.1",
+    "gulp-rename": "^2.1.0",
     "sass": "^1.104.0"
   },
   "dependencies": {

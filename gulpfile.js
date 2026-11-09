@@ -6,6 +6,7 @@ import uglify from 'gulp-uglify';
 import cssnano from 'gulp-cssnano';
 import browserSyncLib from 'browser-sync';
 import fileinclude from 'gulp-file-include';
+import rename from 'gulp-rename';
 
 const browserSync = browserSyncLib.create();
 const scssCompiler = gulpSass(sass);
@@ -21,16 +22,17 @@ function html() {
         .pipe(browserSync.stream());
 }
 
-// SCSS
+
 function scss() {
-    return gulp.src('src/app/scss/*.scss')
+    return gulp.src('src/app/scss/main.scss')
         .pipe(scssCompiler().on('error', scssCompiler.logError))
         .pipe(cssnano())
+        .pipe(rename('index.min.css'))
         .pipe(gulp.dest('dist/css'))
         .pipe(browserSync.stream());
 }
 
-// JS
+
 function js() {
     return gulp.src('src/app/js/*.js')
         .pipe(uglify())
@@ -86,5 +88,5 @@ export default gulp.series(
     images,
     bootstrapCss,
     bootstrapJs,
-    gulp.parallel(watchFiles, serve) // Тепер сервер і стеження працюватимуть разом
+    gulp.parallel(watchFiles, serve)
 );

@@ -1,0 +1,109 @@
+@use 'variables' as *;
+
+@media (max-width: 768px) {
+
+  body {
+    padding: 15px 5px;
+  }
+
+  .cv-container {
+    width: 100%;
+    height: auto;
+  }
+
+  .left-column {
+    padding-left: 20px;
+  }
+
+  .right-column {
+    padding: 0 20px;
+  }
+
+  .left-content {
+    padding: 30px 15px;
+  }
+
+  .profile-header {
+    padding-top: 35px;
+
+    h1 {
+      font-size: 27px;
+    }
+  }
+
+  .profile-photo {
+    height: 300px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  .contact-list p {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .skills-list {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+  }
+
+  .skill-circle {
+    width: 50px;
+    height: 50px;
+
+    &::before {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+
+  .cv-container .row {
+    display: block;
+  }
+
+  .left-column,
+  .right-column {
+    width: 100%;
+  }
+
+  .left-column {
+    padding-left: 0;
+  }
+
+  .top-yellow {
+    height: 35px;
+  }
+
+  .profile-photo {
+    height: 350px;
+  }
+
+  .left-content {
+    padding: 30px;
+  }
+
+  .bottom-yellow {
+    left: 0;
+  }
+
+  .right-column {
+    padding: 30px;
+  }
+
+  .profile-header {
+    padding-top: 10px;
+  }
+
+  .contact-section,
+  .education-section,
+  .experience-section,
+  .expertise-section {
+    margin-top: 35px;
+  }
+}
