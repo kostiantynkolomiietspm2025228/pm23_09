@@ -11,7 +11,7 @@ import rename from 'gulp-rename';
 const browserSync = browserSyncLib.create();
 const scssCompiler = gulpSass(sass);
 
-// HTML
+
 function html() {
     return gulp.src('src/app/*.html')
         .pipe(fileinclude({

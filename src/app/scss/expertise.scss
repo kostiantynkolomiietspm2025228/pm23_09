@@ -19,6 +19,13 @@
   width: $circle-size;
   height: $circle-size;
   border-radius: 50%;
+
+  background: conic-gradient(
+                  from 180deg,
+                  $yellow 0deg var(--progress),
+                  #e4e4e4 var(--progress) 360deg
+  );
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,36 +48,4 @@
     text-align: center;
     color: #444;
   }
-}
-
-.photoshop {
-  background: conic-gradient(
-                  from 180deg,
-                  $yellow 0deg 280deg,
-                  #e4e4e4 280deg 360deg
-  );
-}
-
-.illustrator {
-  background: conic-gradient(
-                  from 180deg,
-                  $yellow 0deg 260deg,
-                  #e4e4e4 260deg 360deg
-  );
-}
-
-.indesign {
-  background: conic-gradient(
-                  from 180deg,
-                  $yellow 0deg 245deg,
-                  #e4e4e4 245deg 360deg
-  );
-}
-
-.powerpoint {
-  background: conic-gradient(
-                  from 180deg,
-                  $yellow 0deg 300deg,
-                  #e4e4e4 300deg 360deg
-  );
 }
