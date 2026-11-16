@@ -22,7 +22,6 @@ function html() {
         .pipe(browserSync.stream());
 }
 
-
 function scss() {
     return gulp.src('src/app/scss/main.scss')
         .pipe(scssCompiler().on('error', scssCompiler.logError))
@@ -65,6 +64,7 @@ function serve() {
 
 // Watcher
 function watchFiles() {
+    gulp.watch('src/app/components/**/*.html', html);
     gulp.watch('src/app/*.html', html);
     gulp.watch('src/app/scss/**/*.scss', scss);
     gulp.watch('src/app/js/**/*.js', js);

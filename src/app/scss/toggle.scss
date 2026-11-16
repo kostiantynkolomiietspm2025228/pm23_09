@@ -1,0 +1,16 @@
+.toggle-arrow {
+  float: right;
+  font-size: 14px;
+  line-height: 1;
+  margin-top: 6px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.toggle-arrow.rotated {
+  transform: rotate(180deg);
+}
+
+.is-hidden {
+  visibility: hidden;
+}
