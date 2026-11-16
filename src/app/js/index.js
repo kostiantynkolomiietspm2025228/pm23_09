@@ -36,7 +36,7 @@ function escapeHtml(value) {
 function setTextContent(elementId, text) {
     const element = document.getElementById(elementId);
     if (!element) return;
-    element.textContent = text;          // тільки текст, без вставлення HTML
+    element.textContent = text;
 }
 
 
@@ -48,12 +48,20 @@ function setPersonName(fullName) {
 
 
 function toggleSection(arrow) {
-    const content = document.getElementById(arrow.dataset.target);
-    if (!content) return;
+    // data-targets — CSS-селектор для кількох блоків (Education, Contact),
+    // data-target — id одного блоку (решта секцій)
+    const targets = arrow.dataset.targets
+        ? document.querySelectorAll(arrow.dataset.targets)
+        : [document.getElementById(arrow.dataset.target)].filter(Boolean);
 
-    const isHidden = content.classList.toggle("is-hidden");   // показати / сховати
-    arrow.classList.toggle("rotated", isHidden);              // повернути стрілку
-    arrow.setAttribute("aria-expanded", String(!isHidden));
+    if (targets.length === 0) return;
+
+    // стан задає стрілка, тому всі блоки згортаються й розгортаються синхронно
+    const hide = arrow.getAttribute("aria-expanded") === "true";
+
+    targets.forEach((element) => element.classList.toggle("is-hidden", hide));
+    arrow.classList.toggle("rotated", hide);
+    arrow.setAttribute("aria-expanded", String(!hide));
 }
 
 function initToggleArrows() {
