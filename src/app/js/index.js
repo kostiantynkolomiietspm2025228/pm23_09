@@ -1,30 +1,6 @@
 "use strict";
 
-
-const FULL_NAME = "JHON ABIRAR";
-
-const experienceData = [
-    {
-        position: "Enter Job Position Here",
-        period: "Present",
-        company: "Company Name / Location",
-        description: "Lorem ipsum dolor sit amet, this is a thena consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore."
-    },
-    {
-        position: "Enter Job Position Here",
-        period: "2017 - 2019",
-        company: "Company Name / Location",
-        description: "Lorem ipsum dolor sit amet, this is a thena consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore."
-    }
-];
-
-
-const skillsData = [
-    { lines: ["Adobe", "Photoshop"],   progress: 280 },
-    { lines: ["Adobe", "Illustrator"], progress: 260 },
-    { lines: ["Adobe", "Indesign"],    progress: 245 },
-    { lines: ["Power", "Point"],       progress: 300 }
-];
+const DATA_URL = "data.json";   // шлях відносно index.html
 
 
 function escapeHtml(value) {
@@ -40,23 +16,48 @@ function setTextContent(elementId, text) {
 }
 
 
-function setPersonName(fullName) {
-    const [firstName, ...rest] = fullName.trim().split(/\s+/);
-    setTextContent("personFirstName", firstName);
-    setTextContent("personLastName", rest.join(" "));
+async function loadData(url) {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+    }
+    return await response.json();
+}
+
+
+function showError(message) {
+    let box = document.getElementById("statusMessage");
+
+    if (!box) {
+        box = document.createElement("div");
+        box.id = "statusMessage";
+        box.setAttribute("role", "alert");
+        box.style.cssText =
+            "max-width:746px;margin:0 auto 12px;padding:8px 12px;" +
+            "background:#fff3cd;border:1px solid #ffc900;border-radius:4px;" +
+            "font:13px sans-serif;color:#25242d;";
+        document.body.prepend(box);
+    }
+    box.textContent = message;
+}
+
+
+function setPersonName(person) {
+    setTextContent("personFirstName", person.firstName);
+    setTextContent("personLastName", person.lastName);
 }
 
 
 function toggleSection(arrow) {
-    // data-targets — CSS-селектор для кількох блоків (Education, Contact),
-    // data-target — id одного блоку (решта секцій)
+
     const targets = arrow.dataset.targets
         ? document.querySelectorAll(arrow.dataset.targets)
         : [document.getElementById(arrow.dataset.target)].filter(Boolean);
 
     if (targets.length === 0) return;
 
-    // стан задає стрілка, тому всі блоки згортаються й розгортаються синхронно
+
     const hide = arrow.getAttribute("aria-expanded") === "true";
 
     targets.forEach((element) => element.classList.toggle("is-hidden", hide));
@@ -101,8 +102,8 @@ function createSkillItem(skill) {
 }
 
 
-function renderList(containerId, items, createItem) {
-    const container = document.getElementById(containerId);
+function renderList(selector, items, createItem) {
+    const container = document.querySelector(selector);
     if (!container) return;
 
     container.innerHTML = "";
@@ -110,9 +111,19 @@ function renderList(containerId, items, createItem) {
 }
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    setPersonName(FULL_NAME);
-    renderList("experienceList", experienceData, createExperienceItem);
-    renderList("skillsList", skillsData, createSkillItem);
+async function init() {
     initToggleArrows();
-});
+
+    try {
+        const data = await loadData(DATA_URL);
+
+        setPersonName(data.person);
+        renderList("#experienceList", data.experience, createExperienceItem);
+        renderList(".skills-list", data.skills, createSkillItem);
+    } catch (error) {
+        console.error(error);
+        showError(`Не вдалося завантажити дані (${DATA_URL}): ${error.message}`);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", init);

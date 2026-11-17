@@ -1,0 +1,26 @@
+{
+  "person": {
+    "firstName": "JHON",
+    "lastName": "ABIRAR"
+  },
+  "experience": [
+    {
+      "position": "CSS Hunter",
+      "period": "Present",
+      "company": "Company Name / Location",
+      "description": "Lorem ipsum dolor sit amet, this is a thena consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore."
+    },
+    {
+      "position": "Enter Job Position Here",
+      "period": "2017 - 2019",
+      "company": "Company Name / Location",
+      "description": "Lorem ipsum dolor sit amet, this is a thena consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore."
+    }
+  ],
+  "skills": [
+    { "lines": ["Adobe", "Photoshop"],   "progress": 280 },
+    { "lines": ["Adobe", "Illustrator"], "progress": 98 },
+    { "lines": ["Adobe", "Indesign"],    "progress": 245 },
+    { "lines": ["Power", "Point"],       "progress": 300 }
+  ]
+}
